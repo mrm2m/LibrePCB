@@ -61,6 +61,7 @@ SOURCES += \
     dialogs/polygonpropertiesdialog.cpp \
     dialogs/stroketextpropertiesdialog.cpp \
     dialogs/textpropertiesdialog.cpp \
+    drillsize.cpp \
     exceptions.cpp \
     fileio/directorylock.cpp \
     fileio/filepath.cpp \
@@ -174,6 +175,7 @@ HEADERS += \
     dialogs/polygonpropertiesdialog.h \
     dialogs/stroketextpropertiesdialog.h \
     dialogs/textpropertiesdialog.h \
+    drillsize.h \
     elementname.h \
     exceptions.h \
     fileio/cmd/cmdlistelementinsert.h \
