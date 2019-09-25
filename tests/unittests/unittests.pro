@@ -64,6 +64,7 @@ PRE_TARGETDEPS += \
 SOURCES += \
     common/applicationtest.cpp \
     common/attributes/attributesubstitutortest.cpp \
+    common/drillsizetest.cpp \
     common/fileio/directorylocktest.cpp \
     common/fileio/filepathtest.cpp \
     common/fileio/serializableobjectlisttest.cpp \
