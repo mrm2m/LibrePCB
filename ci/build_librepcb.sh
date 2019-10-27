@@ -38,7 +38,9 @@ fi
 
 # build librepcb
 mkdir build && pushd build
-qmake ../librepcb.pro -r ${BUILDSPEC-} "QMAKE_CXX=$CXX" "QMAKE_CC=$CC" "QMAKE_CFLAGS=$CFLAGS" "QMAKE_CXXFLAGS=$CXXFLAGS" "PREFIX=`pwd`/install/opt"
+qmake ../librepcb.pro -r ${BUILDSPEC-} CONFIG+=force_debug_info \
+  "QMAKE_CXX=$CXX" "QMAKE_CC=$CC" "QMAKE_CFLAGS=$CFLAGS" "QMAKE_CXXFLAGS=$CXXFLAGS" \
+  "PREFIX=`pwd`/install/opt"
 $MAKE -j8
 $MAKE install
 popd
