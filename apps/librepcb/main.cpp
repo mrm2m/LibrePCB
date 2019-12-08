@@ -22,6 +22,7 @@
  ******************************************************************************/
 #include "controlpanel/controlpanel.h"
 #include "firstrunwizard/firstrunwizard.h"
+#include "initializeworkspacewizard/initializeworkspacewizard.h"
 
 #include <librepcb/common/application.h>
 #include <librepcb/common/debug.h>
@@ -291,7 +292,15 @@ static FilePath determineWorkspacePath() noexcept {
 
 static int openWorkspace(const FilePath& path) noexcept {
   try {
-    Workspace    ws(path);  // The Workspace constructor can throw an exception
+    Workspace ws(path);  // The Workspace constructor can throw an exception
+
+    // Migrate workspace to new major version, if needed
+    QList<Version> versions = Workspace::getFileFormatVersionsOfWorkspace(path);
+    if (!versions.contains(qApp->getFileFormatVersion())) {
+      InitializeWorkspaceWizard wizard(ws);
+      wizard.exec();  // ignore result, open workspace anyway
+    }
+
     ControlPanel p(ws);
     p.show();
 
